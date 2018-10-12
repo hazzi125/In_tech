@@ -1,0 +1,83 @@
+<html>
+<head>
+    <title> Лабораторная 2.2 </title>
+</head>
+
+<script type = "text/javascript" language = "javascript">
+    var i = 0;
+    img_A = new Array();
+
+    img_A[0] = new Image();
+    img_A[1] = new Image();
+    img_A[2] = new Image();
+    img_A[3] = new Image();
+    img_A[4] = new Image();
+    img_A[5] = new Image();
+    img_A[6] = new Image();
+    img_A[7] = new Image();
+    img_A[8] = new Image();
+    img_A[9] = new Image();
+    img_A[10] = new Image();
+    img_A[11] = new Image();
+
+    img_A[0].src = 's1.gif';
+    img_A[1].src = 's2.gif';
+    img_A[2].src = 's3.gif';
+    img_A[3].src = 's4.gif';
+    img_A[4].src = 's5.gif';
+    img_A[5].src = 's6.gif';
+    img_A[6].src = 's7.gif';
+    img_A[7].src = 's8.gif';
+    img_A[8].src = 's9.gif';
+    img_A[9].src = 's10.gif';
+    img_A[10].src = 's11.gif';
+    img_A[11].src = 's12.gif';
+
+    function list_img() {
+        document.images[0].src = img_A[i].src;
+        i++;
+        if(i > 11) 
+            i = 0;
+        idTimer = setTimeout("list_img()", 300);
+    }
+
+    function list_img_fast() {
+        document.images[0].src = img_A[i].src;
+        i++;
+        if(i > 11) 
+            i = 0;
+        idTimer = setTimeout("list_img_fast()", 100);
+    }
+
+    function list_img_slow() {
+        document.images[0].src = img_A[i].src;
+        i++;
+        if(i > 11) 
+            i = 0;
+        idTimer = setTimeout("list_img_slow()", 700);
+    }
+
+    function img_fast() {
+        clearTimeout(idTimer);
+        list_img_fast();
+    }
+
+    function img_slow() {
+        clearTimeout(idTimer);
+        list_img_slow();
+    }
+
+    function stop() {
+        clearTimeout(idTimer);
+    }
+
+</script>
+
+<body>
+    <img src = "s1.gif" name = "pic1"> <br>
+    <input type = "button" id = "st" onclick = "list_img(); this.disabled = true" value = "start">
+    <input type = "button" onclick = "stop(); st.disabled = false" value = "stop">
+    <input type = "button" onclick = "img_fast()"  value = "faster">
+    <input type = "button" onclick = "img_slow()"  value = "slower">
+</body>
+</html>
